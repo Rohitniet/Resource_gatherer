@@ -43,6 +43,7 @@ export async  function POST(req:NextRequest){
     console.log(process.env.youtube_api)
 
     const body = await  req.json();
+    console.log(body+"this is bodyasdasasdasdasdad")
 
     
 try{
