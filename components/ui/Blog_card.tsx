@@ -1,6 +1,6 @@
 // components/BlogCard.tsx
 "use client";
-
+import { PrismaClient } from "@/prisma/prisma-client"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Bookmark } from "lucide-react";
@@ -11,9 +11,10 @@ import { useState } from "react";
 interface BlogCardProps {
   title: string;
   link: string;
+  userid:string;
 }
 
-export function BlogCard({ title, link }: BlogCardProps) {
+export function BlogCard({ title, link ,userid}: BlogCardProps) {
   const [saved, setSaved] = useState(false);
 
   return (

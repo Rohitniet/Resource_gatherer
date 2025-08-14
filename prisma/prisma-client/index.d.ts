@@ -18,6 +18,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Blogs
+ * 
+ */
+export type Blogs = $Result.DefaultSelection<Prisma.$BlogsPayload>
+/**
+ * Model Videos
+ * 
+ */
+export type Videos = $Result.DefaultSelection<Prisma.$VideosPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +163,26 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.blogs`: Exposes CRUD operations for the **Blogs** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Blogs
+    * const blogs = await prisma.blogs.findMany()
+    * ```
+    */
+  get blogs(): Prisma.BlogsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.videos`: Exposes CRUD operations for the **Videos** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Videos
+    * const videos = await prisma.videos.findMany()
+    * ```
+    */
+  get videos(): Prisma.VideosDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +623,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    Blogs: 'Blogs',
+    Videos: 'Videos'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +644,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "blogs" | "videos"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +719,154 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Blogs: {
+        payload: Prisma.$BlogsPayload<ExtArgs>
+        fields: Prisma.BlogsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BlogsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BlogsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload>
+          }
+          findFirst: {
+            args: Prisma.BlogsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BlogsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload>
+          }
+          findMany: {
+            args: Prisma.BlogsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload>[]
+          }
+          create: {
+            args: Prisma.BlogsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload>
+          }
+          createMany: {
+            args: Prisma.BlogsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.BlogsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload>[]
+          }
+          delete: {
+            args: Prisma.BlogsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload>
+          }
+          update: {
+            args: Prisma.BlogsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload>
+          }
+          deleteMany: {
+            args: Prisma.BlogsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BlogsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.BlogsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload>[]
+          }
+          upsert: {
+            args: Prisma.BlogsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BlogsPayload>
+          }
+          aggregate: {
+            args: Prisma.BlogsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBlogs>
+          }
+          groupBy: {
+            args: Prisma.BlogsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BlogsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BlogsCountArgs<ExtArgs>
+            result: $Utils.Optional<BlogsCountAggregateOutputType> | number
+          }
+        }
+      }
+      Videos: {
+        payload: Prisma.$VideosPayload<ExtArgs>
+        fields: Prisma.VideosFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.VideosFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.VideosFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload>
+          }
+          findFirst: {
+            args: Prisma.VideosFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.VideosFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload>
+          }
+          findMany: {
+            args: Prisma.VideosFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload>[]
+          }
+          create: {
+            args: Prisma.VideosCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload>
+          }
+          createMany: {
+            args: Prisma.VideosCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.VideosCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload>[]
+          }
+          delete: {
+            args: Prisma.VideosDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload>
+          }
+          update: {
+            args: Prisma.VideosUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload>
+          }
+          deleteMany: {
+            args: Prisma.VideosDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.VideosUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VideosUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload>[]
+          }
+          upsert: {
+            args: Prisma.VideosUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VideosPayload>
+          }
+          aggregate: {
+            args: Prisma.VideosAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVideos>
+          }
+          groupBy: {
+            args: Prisma.VideosGroupByArgs<ExtArgs>
+            result: $Utils.Optional<VideosGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.VideosCountArgs<ExtArgs>
+            result: $Utils.Optional<VideosCountAggregateOutputType> | number
           }
         }
       }
@@ -783,6 +963,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    blogs?: BlogsOmit
+    videos?: VideosOmit
   }
 
   /* Types for Logging */
@@ -876,6 +1058,45 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    blogs: number
+    videos: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogs?: boolean | UserCountOutputTypeCountBlogsArgs
+    videos?: boolean | UserCountOutputTypeCountVideosArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountBlogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlogsWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountVideosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideosWhereInput
+  }
 
 
   /**
@@ -1072,6 +1293,9 @@ export namespace Prisma {
     email?: boolean
     username?: boolean
     password?: boolean
+    blogs?: boolean | User$blogsArgs<ExtArgs>
+    videos?: boolean | User$videosArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1096,10 +1320,20 @@ export namespace Prisma {
   }
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "username" | "password", ExtArgs["result"]["user"]>
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    blogs?: boolean | User$blogsArgs<ExtArgs>
+    videos?: boolean | User$videosArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      blogs: Prisma.$BlogsPayload<ExtArgs>[]
+      videos: Prisma.$VideosPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       email: string
@@ -1499,6 +1733,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    blogs<T extends User$blogsArgs<ExtArgs> = {}>(args?: Subset<T, User$blogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    videos<T extends User$videosArgs<ExtArgs> = {}>(args?: Subset<T, User$videosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1549,6 +1785,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1567,6 +1807,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1584,6 +1828,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1633,6 +1881,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1681,6 +1933,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -1723,6 +1979,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -1771,6 +2031,10 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to update a User.
      */
@@ -1838,6 +2102,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -1864,6 +2132,10 @@ export namespace Prisma {
      */
     omit?: UserOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -1884,6 +2156,54 @@ export namespace Prisma {
   }
 
   /**
+   * User.blogs
+   */
+  export type User$blogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    where?: BlogsWhereInput
+    orderBy?: BlogsOrderByWithRelationInput | BlogsOrderByWithRelationInput[]
+    cursor?: BlogsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BlogsScalarFieldEnum | BlogsScalarFieldEnum[]
+  }
+
+  /**
+   * User.videos
+   */
+  export type User$videosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    where?: VideosWhereInput
+    orderBy?: VideosOrderByWithRelationInput | VideosOrderByWithRelationInput[]
+    cursor?: VideosWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: VideosScalarFieldEnum | VideosScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1895,6 +2215,2181 @@ export namespace Prisma {
      * Omit specific fields from the User
      */
     omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Blogs
+   */
+
+  export type AggregateBlogs = {
+    _count: BlogsCountAggregateOutputType | null
+    _avg: BlogsAvgAggregateOutputType | null
+    _sum: BlogsSumAggregateOutputType | null
+    _min: BlogsMinAggregateOutputType | null
+    _max: BlogsMaxAggregateOutputType | null
+  }
+
+  export type BlogsAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BlogsSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BlogsMinAggregateOutputType = {
+    id: number | null
+    email: string | null
+    title: string | null
+    link: string | null
+  }
+
+  export type BlogsMaxAggregateOutputType = {
+    id: number | null
+    email: string | null
+    title: string | null
+    link: string | null
+  }
+
+  export type BlogsCountAggregateOutputType = {
+    id: number
+    email: number
+    title: number
+    link: number
+    _all: number
+  }
+
+
+  export type BlogsAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type BlogsSumAggregateInputType = {
+    id?: true
+  }
+
+  export type BlogsMinAggregateInputType = {
+    id?: true
+    email?: true
+    title?: true
+    link?: true
+  }
+
+  export type BlogsMaxAggregateInputType = {
+    id?: true
+    email?: true
+    title?: true
+    link?: true
+  }
+
+  export type BlogsCountAggregateInputType = {
+    id?: true
+    email?: true
+    title?: true
+    link?: true
+    _all?: true
+  }
+
+  export type BlogsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Blogs to aggregate.
+     */
+    where?: BlogsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Blogs to fetch.
+     */
+    orderBy?: BlogsOrderByWithRelationInput | BlogsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BlogsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Blogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Blogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Blogs
+    **/
+    _count?: true | BlogsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BlogsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BlogsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BlogsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BlogsMaxAggregateInputType
+  }
+
+  export type GetBlogsAggregateType<T extends BlogsAggregateArgs> = {
+        [P in keyof T & keyof AggregateBlogs]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBlogs[P]>
+      : GetScalarType<T[P], AggregateBlogs[P]>
+  }
+
+
+
+
+  export type BlogsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BlogsWhereInput
+    orderBy?: BlogsOrderByWithAggregationInput | BlogsOrderByWithAggregationInput[]
+    by: BlogsScalarFieldEnum[] | BlogsScalarFieldEnum
+    having?: BlogsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BlogsCountAggregateInputType | true
+    _avg?: BlogsAvgAggregateInputType
+    _sum?: BlogsSumAggregateInputType
+    _min?: BlogsMinAggregateInputType
+    _max?: BlogsMaxAggregateInputType
+  }
+
+  export type BlogsGroupByOutputType = {
+    id: number
+    email: string
+    title: string
+    link: string
+    _count: BlogsCountAggregateOutputType | null
+    _avg: BlogsAvgAggregateOutputType | null
+    _sum: BlogsSumAggregateOutputType | null
+    _min: BlogsMinAggregateOutputType | null
+    _max: BlogsMaxAggregateOutputType | null
+  }
+
+  type GetBlogsGroupByPayload<T extends BlogsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BlogsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BlogsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BlogsGroupByOutputType[P]>
+            : GetScalarType<T[P], BlogsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BlogsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    title?: boolean
+    link?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["blogs"]>
+
+  export type BlogsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    title?: boolean
+    link?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["blogs"]>
+
+  export type BlogsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    title?: boolean
+    link?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["blogs"]>
+
+  export type BlogsSelectScalar = {
+    id?: boolean
+    email?: boolean
+    title?: boolean
+    link?: boolean
+  }
+
+  export type BlogsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "title" | "link", ExtArgs["result"]["blogs"]>
+  export type BlogsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BlogsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type BlogsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $BlogsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Blogs"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      email: string
+      title: string
+      link: string
+    }, ExtArgs["result"]["blogs"]>
+    composites: {}
+  }
+
+  type BlogsGetPayload<S extends boolean | null | undefined | BlogsDefaultArgs> = $Result.GetResult<Prisma.$BlogsPayload, S>
+
+  type BlogsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BlogsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BlogsCountAggregateInputType | true
+    }
+
+  export interface BlogsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Blogs'], meta: { name: 'Blogs' } }
+    /**
+     * Find zero or one Blogs that matches the filter.
+     * @param {BlogsFindUniqueArgs} args - Arguments to find a Blogs
+     * @example
+     * // Get one Blogs
+     * const blogs = await prisma.blogs.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BlogsFindUniqueArgs>(args: SelectSubset<T, BlogsFindUniqueArgs<ExtArgs>>): Prisma__BlogsClient<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Blogs that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BlogsFindUniqueOrThrowArgs} args - Arguments to find a Blogs
+     * @example
+     * // Get one Blogs
+     * const blogs = await prisma.blogs.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BlogsFindUniqueOrThrowArgs>(args: SelectSubset<T, BlogsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BlogsClient<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Blogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogsFindFirstArgs} args - Arguments to find a Blogs
+     * @example
+     * // Get one Blogs
+     * const blogs = await prisma.blogs.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BlogsFindFirstArgs>(args?: SelectSubset<T, BlogsFindFirstArgs<ExtArgs>>): Prisma__BlogsClient<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Blogs that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogsFindFirstOrThrowArgs} args - Arguments to find a Blogs
+     * @example
+     * // Get one Blogs
+     * const blogs = await prisma.blogs.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BlogsFindFirstOrThrowArgs>(args?: SelectSubset<T, BlogsFindFirstOrThrowArgs<ExtArgs>>): Prisma__BlogsClient<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Blogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Blogs
+     * const blogs = await prisma.blogs.findMany()
+     * 
+     * // Get first 10 Blogs
+     * const blogs = await prisma.blogs.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const blogsWithIdOnly = await prisma.blogs.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BlogsFindManyArgs>(args?: SelectSubset<T, BlogsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Blogs.
+     * @param {BlogsCreateArgs} args - Arguments to create a Blogs.
+     * @example
+     * // Create one Blogs
+     * const Blogs = await prisma.blogs.create({
+     *   data: {
+     *     // ... data to create a Blogs
+     *   }
+     * })
+     * 
+     */
+    create<T extends BlogsCreateArgs>(args: SelectSubset<T, BlogsCreateArgs<ExtArgs>>): Prisma__BlogsClient<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Blogs.
+     * @param {BlogsCreateManyArgs} args - Arguments to create many Blogs.
+     * @example
+     * // Create many Blogs
+     * const blogs = await prisma.blogs.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BlogsCreateManyArgs>(args?: SelectSubset<T, BlogsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Blogs and returns the data saved in the database.
+     * @param {BlogsCreateManyAndReturnArgs} args - Arguments to create many Blogs.
+     * @example
+     * // Create many Blogs
+     * const blogs = await prisma.blogs.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Blogs and only return the `id`
+     * const blogsWithIdOnly = await prisma.blogs.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends BlogsCreateManyAndReturnArgs>(args?: SelectSubset<T, BlogsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Blogs.
+     * @param {BlogsDeleteArgs} args - Arguments to delete one Blogs.
+     * @example
+     * // Delete one Blogs
+     * const Blogs = await prisma.blogs.delete({
+     *   where: {
+     *     // ... filter to delete one Blogs
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BlogsDeleteArgs>(args: SelectSubset<T, BlogsDeleteArgs<ExtArgs>>): Prisma__BlogsClient<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Blogs.
+     * @param {BlogsUpdateArgs} args - Arguments to update one Blogs.
+     * @example
+     * // Update one Blogs
+     * const blogs = await prisma.blogs.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BlogsUpdateArgs>(args: SelectSubset<T, BlogsUpdateArgs<ExtArgs>>): Prisma__BlogsClient<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Blogs.
+     * @param {BlogsDeleteManyArgs} args - Arguments to filter Blogs to delete.
+     * @example
+     * // Delete a few Blogs
+     * const { count } = await prisma.blogs.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BlogsDeleteManyArgs>(args?: SelectSubset<T, BlogsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Blogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Blogs
+     * const blogs = await prisma.blogs.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BlogsUpdateManyArgs>(args: SelectSubset<T, BlogsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Blogs and returns the data updated in the database.
+     * @param {BlogsUpdateManyAndReturnArgs} args - Arguments to update many Blogs.
+     * @example
+     * // Update many Blogs
+     * const blogs = await prisma.blogs.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Blogs and only return the `id`
+     * const blogsWithIdOnly = await prisma.blogs.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends BlogsUpdateManyAndReturnArgs>(args: SelectSubset<T, BlogsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Blogs.
+     * @param {BlogsUpsertArgs} args - Arguments to update or create a Blogs.
+     * @example
+     * // Update or create a Blogs
+     * const blogs = await prisma.blogs.upsert({
+     *   create: {
+     *     // ... data to create a Blogs
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Blogs we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BlogsUpsertArgs>(args: SelectSubset<T, BlogsUpsertArgs<ExtArgs>>): Prisma__BlogsClient<$Result.GetResult<Prisma.$BlogsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Blogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogsCountArgs} args - Arguments to filter Blogs to count.
+     * @example
+     * // Count the number of Blogs
+     * const count = await prisma.blogs.count({
+     *   where: {
+     *     // ... the filter for the Blogs we want to count
+     *   }
+     * })
+    **/
+    count<T extends BlogsCountArgs>(
+      args?: Subset<T, BlogsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BlogsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Blogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BlogsAggregateArgs>(args: Subset<T, BlogsAggregateArgs>): Prisma.PrismaPromise<GetBlogsAggregateType<T>>
+
+    /**
+     * Group by Blogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BlogsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BlogsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BlogsGroupByArgs['orderBy'] }
+        : { orderBy?: BlogsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BlogsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBlogsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Blogs model
+   */
+  readonly fields: BlogsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Blogs.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BlogsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Blogs model
+   */
+  interface BlogsFieldRefs {
+    readonly id: FieldRef<"Blogs", 'Int'>
+    readonly email: FieldRef<"Blogs", 'String'>
+    readonly title: FieldRef<"Blogs", 'String'>
+    readonly link: FieldRef<"Blogs", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Blogs findUnique
+   */
+  export type BlogsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    /**
+     * Filter, which Blogs to fetch.
+     */
+    where: BlogsWhereUniqueInput
+  }
+
+  /**
+   * Blogs findUniqueOrThrow
+   */
+  export type BlogsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    /**
+     * Filter, which Blogs to fetch.
+     */
+    where: BlogsWhereUniqueInput
+  }
+
+  /**
+   * Blogs findFirst
+   */
+  export type BlogsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    /**
+     * Filter, which Blogs to fetch.
+     */
+    where?: BlogsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Blogs to fetch.
+     */
+    orderBy?: BlogsOrderByWithRelationInput | BlogsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Blogs.
+     */
+    cursor?: BlogsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Blogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Blogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Blogs.
+     */
+    distinct?: BlogsScalarFieldEnum | BlogsScalarFieldEnum[]
+  }
+
+  /**
+   * Blogs findFirstOrThrow
+   */
+  export type BlogsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    /**
+     * Filter, which Blogs to fetch.
+     */
+    where?: BlogsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Blogs to fetch.
+     */
+    orderBy?: BlogsOrderByWithRelationInput | BlogsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Blogs.
+     */
+    cursor?: BlogsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Blogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Blogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Blogs.
+     */
+    distinct?: BlogsScalarFieldEnum | BlogsScalarFieldEnum[]
+  }
+
+  /**
+   * Blogs findMany
+   */
+  export type BlogsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    /**
+     * Filter, which Blogs to fetch.
+     */
+    where?: BlogsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Blogs to fetch.
+     */
+    orderBy?: BlogsOrderByWithRelationInput | BlogsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Blogs.
+     */
+    cursor?: BlogsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Blogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Blogs.
+     */
+    skip?: number
+    distinct?: BlogsScalarFieldEnum | BlogsScalarFieldEnum[]
+  }
+
+  /**
+   * Blogs create
+   */
+  export type BlogsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Blogs.
+     */
+    data: XOR<BlogsCreateInput, BlogsUncheckedCreateInput>
+  }
+
+  /**
+   * Blogs createMany
+   */
+  export type BlogsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Blogs.
+     */
+    data: BlogsCreateManyInput | BlogsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Blogs createManyAndReturn
+   */
+  export type BlogsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * The data used to create many Blogs.
+     */
+    data: BlogsCreateManyInput | BlogsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Blogs update
+   */
+  export type BlogsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Blogs.
+     */
+    data: XOR<BlogsUpdateInput, BlogsUncheckedUpdateInput>
+    /**
+     * Choose, which Blogs to update.
+     */
+    where: BlogsWhereUniqueInput
+  }
+
+  /**
+   * Blogs updateMany
+   */
+  export type BlogsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Blogs.
+     */
+    data: XOR<BlogsUpdateManyMutationInput, BlogsUncheckedUpdateManyInput>
+    /**
+     * Filter which Blogs to update
+     */
+    where?: BlogsWhereInput
+    /**
+     * Limit how many Blogs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Blogs updateManyAndReturn
+   */
+  export type BlogsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * The data used to update Blogs.
+     */
+    data: XOR<BlogsUpdateManyMutationInput, BlogsUncheckedUpdateManyInput>
+    /**
+     * Filter which Blogs to update
+     */
+    where?: BlogsWhereInput
+    /**
+     * Limit how many Blogs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Blogs upsert
+   */
+  export type BlogsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Blogs to update in case it exists.
+     */
+    where: BlogsWhereUniqueInput
+    /**
+     * In case the Blogs found by the `where` argument doesn't exist, create a new Blogs with this data.
+     */
+    create: XOR<BlogsCreateInput, BlogsUncheckedCreateInput>
+    /**
+     * In case the Blogs was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BlogsUpdateInput, BlogsUncheckedUpdateInput>
+  }
+
+  /**
+   * Blogs delete
+   */
+  export type BlogsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+    /**
+     * Filter which Blogs to delete.
+     */
+    where: BlogsWhereUniqueInput
+  }
+
+  /**
+   * Blogs deleteMany
+   */
+  export type BlogsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Blogs to delete
+     */
+    where?: BlogsWhereInput
+    /**
+     * Limit how many Blogs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Blogs without action
+   */
+  export type BlogsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Blogs
+     */
+    select?: BlogsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Blogs
+     */
+    omit?: BlogsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BlogsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Videos
+   */
+
+  export type AggregateVideos = {
+    _count: VideosCountAggregateOutputType | null
+    _avg: VideosAvgAggregateOutputType | null
+    _sum: VideosSumAggregateOutputType | null
+    _min: VideosMinAggregateOutputType | null
+    _max: VideosMaxAggregateOutputType | null
+  }
+
+  export type VideosAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type VideosSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type VideosMinAggregateOutputType = {
+    id: number | null
+    email: string | null
+    title: string | null
+    link: string | null
+    thumbnail: string | null
+  }
+
+  export type VideosMaxAggregateOutputType = {
+    id: number | null
+    email: string | null
+    title: string | null
+    link: string | null
+    thumbnail: string | null
+  }
+
+  export type VideosCountAggregateOutputType = {
+    id: number
+    email: number
+    title: number
+    link: number
+    thumbnail: number
+    _all: number
+  }
+
+
+  export type VideosAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type VideosSumAggregateInputType = {
+    id?: true
+  }
+
+  export type VideosMinAggregateInputType = {
+    id?: true
+    email?: true
+    title?: true
+    link?: true
+    thumbnail?: true
+  }
+
+  export type VideosMaxAggregateInputType = {
+    id?: true
+    email?: true
+    title?: true
+    link?: true
+    thumbnail?: true
+  }
+
+  export type VideosCountAggregateInputType = {
+    id?: true
+    email?: true
+    title?: true
+    link?: true
+    thumbnail?: true
+    _all?: true
+  }
+
+  export type VideosAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Videos to aggregate.
+     */
+    where?: VideosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideosOrderByWithRelationInput | VideosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: VideosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Videos
+    **/
+    _count?: true | VideosCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: VideosAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: VideosSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: VideosMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: VideosMaxAggregateInputType
+  }
+
+  export type GetVideosAggregateType<T extends VideosAggregateArgs> = {
+        [P in keyof T & keyof AggregateVideos]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVideos[P]>
+      : GetScalarType<T[P], AggregateVideos[P]>
+  }
+
+
+
+
+  export type VideosGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: VideosWhereInput
+    orderBy?: VideosOrderByWithAggregationInput | VideosOrderByWithAggregationInput[]
+    by: VideosScalarFieldEnum[] | VideosScalarFieldEnum
+    having?: VideosScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: VideosCountAggregateInputType | true
+    _avg?: VideosAvgAggregateInputType
+    _sum?: VideosSumAggregateInputType
+    _min?: VideosMinAggregateInputType
+    _max?: VideosMaxAggregateInputType
+  }
+
+  export type VideosGroupByOutputType = {
+    id: number
+    email: string
+    title: string
+    link: string
+    thumbnail: string
+    _count: VideosCountAggregateOutputType | null
+    _avg: VideosAvgAggregateOutputType | null
+    _sum: VideosSumAggregateOutputType | null
+    _min: VideosMinAggregateOutputType | null
+    _max: VideosMaxAggregateOutputType | null
+  }
+
+  type GetVideosGroupByPayload<T extends VideosGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<VideosGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof VideosGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], VideosGroupByOutputType[P]>
+            : GetScalarType<T[P], VideosGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type VideosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    title?: boolean
+    link?: boolean
+    thumbnail?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["videos"]>
+
+  export type VideosSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    title?: boolean
+    link?: boolean
+    thumbnail?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["videos"]>
+
+  export type VideosSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    email?: boolean
+    title?: boolean
+    link?: boolean
+    thumbnail?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["videos"]>
+
+  export type VideosSelectScalar = {
+    id?: boolean
+    email?: boolean
+    title?: boolean
+    link?: boolean
+    thumbnail?: boolean
+  }
+
+  export type VideosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "title" | "link" | "thumbnail", ExtArgs["result"]["videos"]>
+  export type VideosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type VideosIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type VideosIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $VideosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Videos"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      email: string
+      title: string
+      link: string
+      thumbnail: string
+    }, ExtArgs["result"]["videos"]>
+    composites: {}
+  }
+
+  type VideosGetPayload<S extends boolean | null | undefined | VideosDefaultArgs> = $Result.GetResult<Prisma.$VideosPayload, S>
+
+  type VideosCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<VideosFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: VideosCountAggregateInputType | true
+    }
+
+  export interface VideosDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Videos'], meta: { name: 'Videos' } }
+    /**
+     * Find zero or one Videos that matches the filter.
+     * @param {VideosFindUniqueArgs} args - Arguments to find a Videos
+     * @example
+     * // Get one Videos
+     * const videos = await prisma.videos.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends VideosFindUniqueArgs>(args: SelectSubset<T, VideosFindUniqueArgs<ExtArgs>>): Prisma__VideosClient<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Videos that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {VideosFindUniqueOrThrowArgs} args - Arguments to find a Videos
+     * @example
+     * // Get one Videos
+     * const videos = await prisma.videos.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends VideosFindUniqueOrThrowArgs>(args: SelectSubset<T, VideosFindUniqueOrThrowArgs<ExtArgs>>): Prisma__VideosClient<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Videos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideosFindFirstArgs} args - Arguments to find a Videos
+     * @example
+     * // Get one Videos
+     * const videos = await prisma.videos.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends VideosFindFirstArgs>(args?: SelectSubset<T, VideosFindFirstArgs<ExtArgs>>): Prisma__VideosClient<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Videos that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideosFindFirstOrThrowArgs} args - Arguments to find a Videos
+     * @example
+     * // Get one Videos
+     * const videos = await prisma.videos.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends VideosFindFirstOrThrowArgs>(args?: SelectSubset<T, VideosFindFirstOrThrowArgs<ExtArgs>>): Prisma__VideosClient<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Videos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideosFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Videos
+     * const videos = await prisma.videos.findMany()
+     * 
+     * // Get first 10 Videos
+     * const videos = await prisma.videos.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const videosWithIdOnly = await prisma.videos.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends VideosFindManyArgs>(args?: SelectSubset<T, VideosFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Videos.
+     * @param {VideosCreateArgs} args - Arguments to create a Videos.
+     * @example
+     * // Create one Videos
+     * const Videos = await prisma.videos.create({
+     *   data: {
+     *     // ... data to create a Videos
+     *   }
+     * })
+     * 
+     */
+    create<T extends VideosCreateArgs>(args: SelectSubset<T, VideosCreateArgs<ExtArgs>>): Prisma__VideosClient<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Videos.
+     * @param {VideosCreateManyArgs} args - Arguments to create many Videos.
+     * @example
+     * // Create many Videos
+     * const videos = await prisma.videos.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends VideosCreateManyArgs>(args?: SelectSubset<T, VideosCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Videos and returns the data saved in the database.
+     * @param {VideosCreateManyAndReturnArgs} args - Arguments to create many Videos.
+     * @example
+     * // Create many Videos
+     * const videos = await prisma.videos.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Videos and only return the `id`
+     * const videosWithIdOnly = await prisma.videos.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends VideosCreateManyAndReturnArgs>(args?: SelectSubset<T, VideosCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Videos.
+     * @param {VideosDeleteArgs} args - Arguments to delete one Videos.
+     * @example
+     * // Delete one Videos
+     * const Videos = await prisma.videos.delete({
+     *   where: {
+     *     // ... filter to delete one Videos
+     *   }
+     * })
+     * 
+     */
+    delete<T extends VideosDeleteArgs>(args: SelectSubset<T, VideosDeleteArgs<ExtArgs>>): Prisma__VideosClient<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Videos.
+     * @param {VideosUpdateArgs} args - Arguments to update one Videos.
+     * @example
+     * // Update one Videos
+     * const videos = await prisma.videos.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends VideosUpdateArgs>(args: SelectSubset<T, VideosUpdateArgs<ExtArgs>>): Prisma__VideosClient<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Videos.
+     * @param {VideosDeleteManyArgs} args - Arguments to filter Videos to delete.
+     * @example
+     * // Delete a few Videos
+     * const { count } = await prisma.videos.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends VideosDeleteManyArgs>(args?: SelectSubset<T, VideosDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Videos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideosUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Videos
+     * const videos = await prisma.videos.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends VideosUpdateManyArgs>(args: SelectSubset<T, VideosUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Videos and returns the data updated in the database.
+     * @param {VideosUpdateManyAndReturnArgs} args - Arguments to update many Videos.
+     * @example
+     * // Update many Videos
+     * const videos = await prisma.videos.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Videos and only return the `id`
+     * const videosWithIdOnly = await prisma.videos.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VideosUpdateManyAndReturnArgs>(args: SelectSubset<T, VideosUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Videos.
+     * @param {VideosUpsertArgs} args - Arguments to update or create a Videos.
+     * @example
+     * // Update or create a Videos
+     * const videos = await prisma.videos.upsert({
+     *   create: {
+     *     // ... data to create a Videos
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Videos we want to update
+     *   }
+     * })
+     */
+    upsert<T extends VideosUpsertArgs>(args: SelectSubset<T, VideosUpsertArgs<ExtArgs>>): Prisma__VideosClient<$Result.GetResult<Prisma.$VideosPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Videos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideosCountArgs} args - Arguments to filter Videos to count.
+     * @example
+     * // Count the number of Videos
+     * const count = await prisma.videos.count({
+     *   where: {
+     *     // ... the filter for the Videos we want to count
+     *   }
+     * })
+    **/
+    count<T extends VideosCountArgs>(
+      args?: Subset<T, VideosCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], VideosCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Videos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends VideosAggregateArgs>(args: Subset<T, VideosAggregateArgs>): Prisma.PrismaPromise<GetVideosAggregateType<T>>
+
+    /**
+     * Group by Videos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {VideosGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends VideosGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: VideosGroupByArgs['orderBy'] }
+        : { orderBy?: VideosGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, VideosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVideosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Videos model
+   */
+  readonly fields: VideosFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Videos.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__VideosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Videos model
+   */
+  interface VideosFieldRefs {
+    readonly id: FieldRef<"Videos", 'Int'>
+    readonly email: FieldRef<"Videos", 'String'>
+    readonly title: FieldRef<"Videos", 'String'>
+    readonly link: FieldRef<"Videos", 'String'>
+    readonly thumbnail: FieldRef<"Videos", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Videos findUnique
+   */
+  export type VideosFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    /**
+     * Filter, which Videos to fetch.
+     */
+    where: VideosWhereUniqueInput
+  }
+
+  /**
+   * Videos findUniqueOrThrow
+   */
+  export type VideosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    /**
+     * Filter, which Videos to fetch.
+     */
+    where: VideosWhereUniqueInput
+  }
+
+  /**
+   * Videos findFirst
+   */
+  export type VideosFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    /**
+     * Filter, which Videos to fetch.
+     */
+    where?: VideosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideosOrderByWithRelationInput | VideosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Videos.
+     */
+    cursor?: VideosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Videos.
+     */
+    distinct?: VideosScalarFieldEnum | VideosScalarFieldEnum[]
+  }
+
+  /**
+   * Videos findFirstOrThrow
+   */
+  export type VideosFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    /**
+     * Filter, which Videos to fetch.
+     */
+    where?: VideosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideosOrderByWithRelationInput | VideosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Videos.
+     */
+    cursor?: VideosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Videos.
+     */
+    distinct?: VideosScalarFieldEnum | VideosScalarFieldEnum[]
+  }
+
+  /**
+   * Videos findMany
+   */
+  export type VideosFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    /**
+     * Filter, which Videos to fetch.
+     */
+    where?: VideosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Videos to fetch.
+     */
+    orderBy?: VideosOrderByWithRelationInput | VideosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Videos.
+     */
+    cursor?: VideosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Videos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Videos.
+     */
+    skip?: number
+    distinct?: VideosScalarFieldEnum | VideosScalarFieldEnum[]
+  }
+
+  /**
+   * Videos create
+   */
+  export type VideosCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Videos.
+     */
+    data: XOR<VideosCreateInput, VideosUncheckedCreateInput>
+  }
+
+  /**
+   * Videos createMany
+   */
+  export type VideosCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Videos.
+     */
+    data: VideosCreateManyInput | VideosCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Videos createManyAndReturn
+   */
+  export type VideosCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * The data used to create many Videos.
+     */
+    data: VideosCreateManyInput | VideosCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Videos update
+   */
+  export type VideosUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Videos.
+     */
+    data: XOR<VideosUpdateInput, VideosUncheckedUpdateInput>
+    /**
+     * Choose, which Videos to update.
+     */
+    where: VideosWhereUniqueInput
+  }
+
+  /**
+   * Videos updateMany
+   */
+  export type VideosUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Videos.
+     */
+    data: XOR<VideosUpdateManyMutationInput, VideosUncheckedUpdateManyInput>
+    /**
+     * Filter which Videos to update
+     */
+    where?: VideosWhereInput
+    /**
+     * Limit how many Videos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Videos updateManyAndReturn
+   */
+  export type VideosUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * The data used to update Videos.
+     */
+    data: XOR<VideosUpdateManyMutationInput, VideosUncheckedUpdateManyInput>
+    /**
+     * Filter which Videos to update
+     */
+    where?: VideosWhereInput
+    /**
+     * Limit how many Videos to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Videos upsert
+   */
+  export type VideosUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Videos to update in case it exists.
+     */
+    where: VideosWhereUniqueInput
+    /**
+     * In case the Videos found by the `where` argument doesn't exist, create a new Videos with this data.
+     */
+    create: XOR<VideosCreateInput, VideosUncheckedCreateInput>
+    /**
+     * In case the Videos was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<VideosUpdateInput, VideosUncheckedUpdateInput>
+  }
+
+  /**
+   * Videos delete
+   */
+  export type VideosDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
+    /**
+     * Filter which Videos to delete.
+     */
+    where: VideosWhereUniqueInput
+  }
+
+  /**
+   * Videos deleteMany
+   */
+  export type VideosDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Videos to delete
+     */
+    where?: VideosWhereInput
+    /**
+     * Limit how many Videos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Videos without action
+   */
+  export type VideosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Videos
+     */
+    select?: VideosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Videos
+     */
+    omit?: VideosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: VideosInclude<ExtArgs> | null
   }
 
 
@@ -1920,6 +4415,27 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const BlogsScalarFieldEnum: {
+    id: 'id',
+    email: 'email',
+    title: 'title',
+    link: 'link'
+  };
+
+  export type BlogsScalarFieldEnum = (typeof BlogsScalarFieldEnum)[keyof typeof BlogsScalarFieldEnum]
+
+
+  export const VideosScalarFieldEnum: {
+    id: 'id',
+    email: 'email',
+    title: 'title',
+    link: 'link',
+    thumbnail: 'thumbnail'
+  };
+
+  export type VideosScalarFieldEnum = (typeof VideosScalarFieldEnum)[keyof typeof VideosScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1996,6 +4512,8 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     username?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    blogs?: BlogsListRelationFilter
+    videos?: VideosListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -2003,6 +4521,8 @@ export namespace Prisma {
     email?: SortOrder
     username?: SortOrder
     password?: SortOrder
+    blogs?: BlogsOrderByRelationAggregateInput
+    videos?: VideosOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -2013,6 +4533,8 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     username?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    blogs?: BlogsListRelationFilter
+    videos?: VideosListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -2037,10 +4559,121 @@ export namespace Prisma {
     password?: StringWithAggregatesFilter<"User"> | string
   }
 
+  export type BlogsWhereInput = {
+    AND?: BlogsWhereInput | BlogsWhereInput[]
+    OR?: BlogsWhereInput[]
+    NOT?: BlogsWhereInput | BlogsWhereInput[]
+    id?: IntFilter<"Blogs"> | number
+    email?: StringFilter<"Blogs"> | string
+    title?: StringFilter<"Blogs"> | string
+    link?: StringFilter<"Blogs"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type BlogsOrderByWithRelationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type BlogsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: BlogsWhereInput | BlogsWhereInput[]
+    OR?: BlogsWhereInput[]
+    NOT?: BlogsWhereInput | BlogsWhereInput[]
+    email?: StringFilter<"Blogs"> | string
+    title?: StringFilter<"Blogs"> | string
+    link?: StringFilter<"Blogs"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type BlogsOrderByWithAggregationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    _count?: BlogsCountOrderByAggregateInput
+    _avg?: BlogsAvgOrderByAggregateInput
+    _max?: BlogsMaxOrderByAggregateInput
+    _min?: BlogsMinOrderByAggregateInput
+    _sum?: BlogsSumOrderByAggregateInput
+  }
+
+  export type BlogsScalarWhereWithAggregatesInput = {
+    AND?: BlogsScalarWhereWithAggregatesInput | BlogsScalarWhereWithAggregatesInput[]
+    OR?: BlogsScalarWhereWithAggregatesInput[]
+    NOT?: BlogsScalarWhereWithAggregatesInput | BlogsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Blogs"> | number
+    email?: StringWithAggregatesFilter<"Blogs"> | string
+    title?: StringWithAggregatesFilter<"Blogs"> | string
+    link?: StringWithAggregatesFilter<"Blogs"> | string
+  }
+
+  export type VideosWhereInput = {
+    AND?: VideosWhereInput | VideosWhereInput[]
+    OR?: VideosWhereInput[]
+    NOT?: VideosWhereInput | VideosWhereInput[]
+    id?: IntFilter<"Videos"> | number
+    email?: StringFilter<"Videos"> | string
+    title?: StringFilter<"Videos"> | string
+    link?: StringFilter<"Videos"> | string
+    thumbnail?: StringFilter<"Videos"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type VideosOrderByWithRelationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    thumbnail?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type VideosWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: VideosWhereInput | VideosWhereInput[]
+    OR?: VideosWhereInput[]
+    NOT?: VideosWhereInput | VideosWhereInput[]
+    email?: StringFilter<"Videos"> | string
+    title?: StringFilter<"Videos"> | string
+    link?: StringFilter<"Videos"> | string
+    thumbnail?: StringFilter<"Videos"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type VideosOrderByWithAggregationInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    thumbnail?: SortOrder
+    _count?: VideosCountOrderByAggregateInput
+    _avg?: VideosAvgOrderByAggregateInput
+    _max?: VideosMaxOrderByAggregateInput
+    _min?: VideosMinOrderByAggregateInput
+    _sum?: VideosSumOrderByAggregateInput
+  }
+
+  export type VideosScalarWhereWithAggregatesInput = {
+    AND?: VideosScalarWhereWithAggregatesInput | VideosScalarWhereWithAggregatesInput[]
+    OR?: VideosScalarWhereWithAggregatesInput[]
+    NOT?: VideosScalarWhereWithAggregatesInput | VideosScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Videos"> | number
+    email?: StringWithAggregatesFilter<"Videos"> | string
+    title?: StringWithAggregatesFilter<"Videos"> | string
+    link?: StringWithAggregatesFilter<"Videos"> | string
+    thumbnail?: StringWithAggregatesFilter<"Videos"> | string
+  }
+
   export type UserCreateInput = {
     email: string
     username: string
     password: string
+    blogs?: BlogsCreateNestedManyWithoutUserInput
+    videos?: VideosCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -2048,12 +4681,16 @@ export namespace Prisma {
     email: string
     username: string
     password: string
+    blogs?: BlogsUncheckedCreateNestedManyWithoutUserInput
+    videos?: VideosUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    blogs?: BlogsUpdateManyWithoutUserNestedInput
+    videos?: VideosUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -2061,6 +4698,8 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    blogs?: BlogsUncheckedUpdateManyWithoutUserNestedInput
+    videos?: VideosUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -2081,6 +4720,103 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BlogsCreateInput = {
+    title: string
+    link: string
+    user: UserCreateNestedOneWithoutBlogsInput
+  }
+
+  export type BlogsUncheckedCreateInput = {
+    id?: number
+    email: string
+    title: string
+    link: string
+  }
+
+  export type BlogsUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutBlogsNestedInput
+  }
+
+  export type BlogsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BlogsCreateManyInput = {
+    id?: number
+    email: string
+    title: string
+    link: string
+  }
+
+  export type BlogsUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BlogsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VideosCreateInput = {
+    title: string
+    link: string
+    thumbnail: string
+    user: UserCreateNestedOneWithoutVideosInput
+  }
+
+  export type VideosUncheckedCreateInput = {
+    id?: number
+    email: string
+    title: string
+    link: string
+    thumbnail: string
+  }
+
+  export type VideosUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutVideosNestedInput
+  }
+
+  export type VideosUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VideosCreateManyInput = {
+    id?: number
+    email: string
+    title: string
+    link: string
+    thumbnail: string
+  }
+
+  export type VideosUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VideosUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -2107,6 +4843,26 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type BlogsListRelationFilter = {
+    every?: BlogsWhereInput
+    some?: BlogsWhereInput
+    none?: BlogsWhereInput
+  }
+
+  export type VideosListRelationFilter = {
+    every?: VideosWhereInput
+    some?: VideosWhereInput
+    none?: VideosWhereInput
+  }
+
+  export type BlogsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type VideosOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -2172,8 +4928,130 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type BlogsCountOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+  }
+
+  export type BlogsAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BlogsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+  }
+
+  export type BlogsMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+  }
+
+  export type BlogsSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type VideosCountOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    thumbnail?: SortOrder
+  }
+
+  export type VideosAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type VideosMaxOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    thumbnail?: SortOrder
+  }
+
+  export type VideosMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    thumbnail?: SortOrder
+  }
+
+  export type VideosSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BlogsCreateNestedManyWithoutUserInput = {
+    create?: XOR<BlogsCreateWithoutUserInput, BlogsUncheckedCreateWithoutUserInput> | BlogsCreateWithoutUserInput[] | BlogsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BlogsCreateOrConnectWithoutUserInput | BlogsCreateOrConnectWithoutUserInput[]
+    createMany?: BlogsCreateManyUserInputEnvelope
+    connect?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+  }
+
+  export type VideosCreateNestedManyWithoutUserInput = {
+    create?: XOR<VideosCreateWithoutUserInput, VideosUncheckedCreateWithoutUserInput> | VideosCreateWithoutUserInput[] | VideosUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: VideosCreateOrConnectWithoutUserInput | VideosCreateOrConnectWithoutUserInput[]
+    createMany?: VideosCreateManyUserInputEnvelope
+    connect?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+  }
+
+  export type BlogsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<BlogsCreateWithoutUserInput, BlogsUncheckedCreateWithoutUserInput> | BlogsCreateWithoutUserInput[] | BlogsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BlogsCreateOrConnectWithoutUserInput | BlogsCreateOrConnectWithoutUserInput[]
+    createMany?: BlogsCreateManyUserInputEnvelope
+    connect?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+  }
+
+  export type VideosUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<VideosCreateWithoutUserInput, VideosUncheckedCreateWithoutUserInput> | VideosCreateWithoutUserInput[] | VideosUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: VideosCreateOrConnectWithoutUserInput | VideosCreateOrConnectWithoutUserInput[]
+    createMany?: VideosCreateManyUserInputEnvelope
+    connect?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type BlogsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BlogsCreateWithoutUserInput, BlogsUncheckedCreateWithoutUserInput> | BlogsCreateWithoutUserInput[] | BlogsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BlogsCreateOrConnectWithoutUserInput | BlogsCreateOrConnectWithoutUserInput[]
+    upsert?: BlogsUpsertWithWhereUniqueWithoutUserInput | BlogsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BlogsCreateManyUserInputEnvelope
+    set?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+    disconnect?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+    delete?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+    connect?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+    update?: BlogsUpdateWithWhereUniqueWithoutUserInput | BlogsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BlogsUpdateManyWithWhereWithoutUserInput | BlogsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BlogsScalarWhereInput | BlogsScalarWhereInput[]
+  }
+
+  export type VideosUpdateManyWithoutUserNestedInput = {
+    create?: XOR<VideosCreateWithoutUserInput, VideosUncheckedCreateWithoutUserInput> | VideosCreateWithoutUserInput[] | VideosUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: VideosCreateOrConnectWithoutUserInput | VideosCreateOrConnectWithoutUserInput[]
+    upsert?: VideosUpsertWithWhereUniqueWithoutUserInput | VideosUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: VideosCreateManyUserInputEnvelope
+    set?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+    disconnect?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+    delete?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+    connect?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+    update?: VideosUpdateWithWhereUniqueWithoutUserInput | VideosUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: VideosUpdateManyWithWhereWithoutUserInput | VideosUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: VideosScalarWhereInput | VideosScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -2182,6 +5060,62 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BlogsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<BlogsCreateWithoutUserInput, BlogsUncheckedCreateWithoutUserInput> | BlogsCreateWithoutUserInput[] | BlogsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: BlogsCreateOrConnectWithoutUserInput | BlogsCreateOrConnectWithoutUserInput[]
+    upsert?: BlogsUpsertWithWhereUniqueWithoutUserInput | BlogsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: BlogsCreateManyUserInputEnvelope
+    set?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+    disconnect?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+    delete?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+    connect?: BlogsWhereUniqueInput | BlogsWhereUniqueInput[]
+    update?: BlogsUpdateWithWhereUniqueWithoutUserInput | BlogsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: BlogsUpdateManyWithWhereWithoutUserInput | BlogsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: BlogsScalarWhereInput | BlogsScalarWhereInput[]
+  }
+
+  export type VideosUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<VideosCreateWithoutUserInput, VideosUncheckedCreateWithoutUserInput> | VideosCreateWithoutUserInput[] | VideosUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: VideosCreateOrConnectWithoutUserInput | VideosCreateOrConnectWithoutUserInput[]
+    upsert?: VideosUpsertWithWhereUniqueWithoutUserInput | VideosUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: VideosCreateManyUserInputEnvelope
+    set?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+    disconnect?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+    delete?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+    connect?: VideosWhereUniqueInput | VideosWhereUniqueInput[]
+    update?: VideosUpdateWithWhereUniqueWithoutUserInput | VideosUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: VideosUpdateManyWithWhereWithoutUserInput | VideosUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: VideosScalarWhereInput | VideosScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutBlogsInput = {
+    create?: XOR<UserCreateWithoutBlogsInput, UserUncheckedCreateWithoutBlogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBlogsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutBlogsNestedInput = {
+    create?: XOR<UserCreateWithoutBlogsInput, UserUncheckedCreateWithoutBlogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBlogsInput
+    upsert?: UserUpsertWithoutBlogsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBlogsInput, UserUpdateWithoutBlogsInput>, UserUncheckedUpdateWithoutBlogsInput>
+  }
+
+  export type UserCreateNestedOneWithoutVideosInput = {
+    create?: XOR<UserCreateWithoutVideosInput, UserUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: UserCreateOrConnectWithoutVideosInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutVideosNestedInput = {
+    create?: XOR<UserCreateWithoutVideosInput, UserUncheckedCreateWithoutVideosInput>
+    connectOrCreate?: UserCreateOrConnectWithoutVideosInput
+    upsert?: UserUpsertWithoutVideosInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutVideosInput, UserUpdateWithoutVideosInput>, UserUncheckedUpdateWithoutVideosInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -2251,6 +5185,245 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type BlogsCreateWithoutUserInput = {
+    title: string
+    link: string
+  }
+
+  export type BlogsUncheckedCreateWithoutUserInput = {
+    id?: number
+    title: string
+    link: string
+  }
+
+  export type BlogsCreateOrConnectWithoutUserInput = {
+    where: BlogsWhereUniqueInput
+    create: XOR<BlogsCreateWithoutUserInput, BlogsUncheckedCreateWithoutUserInput>
+  }
+
+  export type BlogsCreateManyUserInputEnvelope = {
+    data: BlogsCreateManyUserInput | BlogsCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type VideosCreateWithoutUserInput = {
+    title: string
+    link: string
+    thumbnail: string
+  }
+
+  export type VideosUncheckedCreateWithoutUserInput = {
+    id?: number
+    title: string
+    link: string
+    thumbnail: string
+  }
+
+  export type VideosCreateOrConnectWithoutUserInput = {
+    where: VideosWhereUniqueInput
+    create: XOR<VideosCreateWithoutUserInput, VideosUncheckedCreateWithoutUserInput>
+  }
+
+  export type VideosCreateManyUserInputEnvelope = {
+    data: VideosCreateManyUserInput | VideosCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type BlogsUpsertWithWhereUniqueWithoutUserInput = {
+    where: BlogsWhereUniqueInput
+    update: XOR<BlogsUpdateWithoutUserInput, BlogsUncheckedUpdateWithoutUserInput>
+    create: XOR<BlogsCreateWithoutUserInput, BlogsUncheckedCreateWithoutUserInput>
+  }
+
+  export type BlogsUpdateWithWhereUniqueWithoutUserInput = {
+    where: BlogsWhereUniqueInput
+    data: XOR<BlogsUpdateWithoutUserInput, BlogsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BlogsUpdateManyWithWhereWithoutUserInput = {
+    where: BlogsScalarWhereInput
+    data: XOR<BlogsUpdateManyMutationInput, BlogsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BlogsScalarWhereInput = {
+    AND?: BlogsScalarWhereInput | BlogsScalarWhereInput[]
+    OR?: BlogsScalarWhereInput[]
+    NOT?: BlogsScalarWhereInput | BlogsScalarWhereInput[]
+    id?: IntFilter<"Blogs"> | number
+    email?: StringFilter<"Blogs"> | string
+    title?: StringFilter<"Blogs"> | string
+    link?: StringFilter<"Blogs"> | string
+  }
+
+  export type VideosUpsertWithWhereUniqueWithoutUserInput = {
+    where: VideosWhereUniqueInput
+    update: XOR<VideosUpdateWithoutUserInput, VideosUncheckedUpdateWithoutUserInput>
+    create: XOR<VideosCreateWithoutUserInput, VideosUncheckedCreateWithoutUserInput>
+  }
+
+  export type VideosUpdateWithWhereUniqueWithoutUserInput = {
+    where: VideosWhereUniqueInput
+    data: XOR<VideosUpdateWithoutUserInput, VideosUncheckedUpdateWithoutUserInput>
+  }
+
+  export type VideosUpdateManyWithWhereWithoutUserInput = {
+    where: VideosScalarWhereInput
+    data: XOR<VideosUpdateManyMutationInput, VideosUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type VideosScalarWhereInput = {
+    AND?: VideosScalarWhereInput | VideosScalarWhereInput[]
+    OR?: VideosScalarWhereInput[]
+    NOT?: VideosScalarWhereInput | VideosScalarWhereInput[]
+    id?: IntFilter<"Videos"> | number
+    email?: StringFilter<"Videos"> | string
+    title?: StringFilter<"Videos"> | string
+    link?: StringFilter<"Videos"> | string
+    thumbnail?: StringFilter<"Videos"> | string
+  }
+
+  export type UserCreateWithoutBlogsInput = {
+    email: string
+    username: string
+    password: string
+    videos?: VideosCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutBlogsInput = {
+    id?: number
+    email: string
+    username: string
+    password: string
+    videos?: VideosUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutBlogsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutBlogsInput, UserUncheckedCreateWithoutBlogsInput>
+  }
+
+  export type UserUpsertWithoutBlogsInput = {
+    update: XOR<UserUpdateWithoutBlogsInput, UserUncheckedUpdateWithoutBlogsInput>
+    create: XOR<UserCreateWithoutBlogsInput, UserUncheckedCreateWithoutBlogsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutBlogsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutBlogsInput, UserUncheckedUpdateWithoutBlogsInput>
+  }
+
+  export type UserUpdateWithoutBlogsInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    videos?: VideosUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutBlogsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    videos?: VideosUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutVideosInput = {
+    email: string
+    username: string
+    password: string
+    blogs?: BlogsCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutVideosInput = {
+    id?: number
+    email: string
+    username: string
+    password: string
+    blogs?: BlogsUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutVideosInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutVideosInput, UserUncheckedCreateWithoutVideosInput>
+  }
+
+  export type UserUpsertWithoutVideosInput = {
+    update: XOR<UserUpdateWithoutVideosInput, UserUncheckedUpdateWithoutVideosInput>
+    create: XOR<UserCreateWithoutVideosInput, UserUncheckedCreateWithoutVideosInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutVideosInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutVideosInput, UserUncheckedUpdateWithoutVideosInput>
+  }
+
+  export type UserUpdateWithoutVideosInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    blogs?: BlogsUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutVideosInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    blogs?: BlogsUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type BlogsCreateManyUserInput = {
+    id?: number
+    title: string
+    link: string
+  }
+
+  export type VideosCreateManyUserInput = {
+    id?: number
+    title: string
+    link: string
+    thumbnail: string
+  }
+
+  export type BlogsUpdateWithoutUserInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BlogsUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type BlogsUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VideosUpdateWithoutUserInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VideosUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type VideosUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
   }
 
 

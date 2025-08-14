@@ -13,6 +13,7 @@ export default function Dashboard() {
   const inputref = useRef<HTMLInputElement>(null);
 
  const { data: session, status } = useSession();
+ 
 
   const [content, setcontent] = useState();
 
@@ -85,7 +86,7 @@ export default function Dashboard() {
 
             {
                //@ts-ignore
-                content?.blogs.map(a =>(<BlogCard link={a.link}   title={a.title} /> ))
+                content?.blogs.map(a =>(<BlogCard  link={a.link}   title={a.title} /> ))
 
 
             }

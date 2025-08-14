@@ -127,6 +127,21 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.BlogsScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  title: 'title',
+  link: 'link'
+};
+
+exports.Prisma.VideosScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  title: 'title',
+  link: 'link',
+  thumbnail: 'thumbnail'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -139,7 +154,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Blogs: 'Blogs',
+  Videos: 'Videos'
 };
 
 /**

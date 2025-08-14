@@ -22,6 +22,29 @@ model User{
   email String @unique
   username String
   password String 
+  blogs  Blogs[]
+  videos Videos[]
+  
   
 }
 
+
+model Blogs{
+   id Int @default(autoincrement()) @id
+   email String 
+   title String
+   link String
+   user User @relation(fields: [email] ,references: [email])
+}
+
+
+model Videos{
+   id Int @default(autoincrement()) @id
+   email String 
+   title String
+   link String
+   thumbnail String
+
+   user User @relation(fields: [email] ,references: [email])
+    
+}
