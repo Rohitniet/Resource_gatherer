@@ -1,10 +1,13 @@
 "use client";
 
-import ThumbnailCard from "@/components/Thubnail";
+
+import { ThumbnailCard } from "@/components/Thubnail";
 import { BlogCard } from "@/components/ui/Blog_card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
+import Email from "next-auth/providers/email";
+
 
 import { SessionProvider, signOut, useSession } from "next-auth/react";
 import { useRef, useState } from "react";
@@ -74,7 +77,7 @@ export default function Dashboard() {
 
             {
                //@ts-ignore
-                content?.video.items.map(a =>(<ThumbnailCard link={a.id.videoId} photo={a.snippet.thumbnails.medium.url}  title={a.snippet.title} /> ))
+                content?.video.items.map(a =>(<ThumbnailCard email={session?.user?.email}  link={a.id.videoId} thumbnail={a.snippet.thumbnails.medium.url}  title={a.snippet.title} /> ))
             }
         </div>
 
@@ -86,7 +89,7 @@ export default function Dashboard() {
 
             {
                //@ts-ignore
-                content?.blogs.map(a =>(<BlogCard  link={a.link}   title={a.title} /> ))
+                content?.blogs.map(a =>(<BlogCard  email={session?.user?.email} link={a.link}   title={a.title} /> ))
 
 
             }

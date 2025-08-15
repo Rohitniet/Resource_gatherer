@@ -7,15 +7,48 @@ import { Bookmark } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import { save } from "@/app/(common)/save";
+import axios from "axios";
 
 interface BlogCardProps {
   title: string;
   link: string;
-  userid:string;
+  email:string;
 }
 
-export function BlogCard({ title, link ,userid}: BlogCardProps) {
+
+
+export function BlogCard({ title, link ,email}: BlogCardProps) {
   const [saved, setSaved] = useState(false);
+
+  const client= new PrismaClient();
+
+
+  
+
+
+  const saveinfo={
+    email,
+    resource:{
+      title,
+      link,
+      type:"blog" as const
+    }
+    
+  }
+
+  async function savehandler(){
+
+    const res=await axios.post("/api/dashboard",{
+      saveinfo
+    })
+
+    setSaved(true)
+    console.log(res)
+
+  
+  
+}
 
   return (
     <motion.div
@@ -29,7 +62,7 @@ export function BlogCard({ title, link ,userid}: BlogCardProps) {
           <Button
             size="icon"
             variant={saved ? "default" : "outline"}
-            onClick={() => setSaved(!saved)}
+            onClick={savehandler}
           >
             <Bookmark
               className={`h-5 w-5 ${saved ? "fill-current text-yellow-500" : ""}`}
